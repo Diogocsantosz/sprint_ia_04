@@ -1,0 +1,54 @@
+[
+  {
+    "provedor": "ollama",
+    "modelo": "qwen3:8b",
+    "prompt": "v2",
+    "top_k": 4,
+    "temperature": 0.0,
+    "top_p": 0.9,
+    "max_tokens": 384,
+    "resposta": "A tarifa de ponta apresentada no exemplo é simulada e não representa uma tarifa real. [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo]",
+    "fontes": [
+      "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo"
+    ],
+    "latencia_s": 1.186
+  },
+  {
+    "provedor": "ollama",
+    "modelo": "qwen3:8b",
+    "prompt": "v3",
+    "top_k": 4,
+    "temperature": 0.0,
+    "top_p": 0.9,
+    "max_tokens": 384,
+    "resposta": "A tarifa de ponta apresentada no exemplo é simulada e não representa uma tarifa real [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo].",
+    "fontes": [
+      "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo"
+    ],
+    "latencia_s": 1.065
+  },
+  {
+    "provedor": "ollama",
+    "modelo": "gemma3:1b",
+    "prompt": "v2",
+    "top_k": 4,
+    "temperature": 0.0,
+    "top_p": 0.9,
+    "max_tokens": 384,
+    "resposta": "Não encontrei informação suficiente na base para responder.",
+    "fontes": [],
+    "latencia_s": 4.577
+  },
+  {
+    "provedor": "ollama",
+    "modelo": "gemma3:1b",
+    "prompt": "v3",
+    "top_k": 4,
+    "temperature": 0.0,
+    "top_p": 0.9,
+    "max_tokens": 384,
+    "resposta": "Não encontrei informação suficiente na base para responder.",
+    "fontes": [],
+    "latencia_s": 0.435
+  }
+]
