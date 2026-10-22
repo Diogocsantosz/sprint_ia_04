@@ -1,0 +1,22 @@
+[
+  {
+    "id": "conectores",
+    "pergunta": "Qual é a diferença entre os conectores Tipo 2 e CCS2?",
+    "criterios": ["Tipo 2 associado a AC", "CCS2 inclui contatos para DC", "não prometer potência universal"]
+  },
+  {
+    "id": "tarifa",
+    "pergunta": "No exemplo da base, qual o horário e o preço da ponta? Essa tarifa é real?",
+    "criterios": ["17:00 a 19:59", "R$ 1,10/kWh", "deixar explícito que é fictícia"]
+  },
+  {
+    "id": "modelo",
+    "pergunta": "O GW22K-HCA entrega sempre 22 kW a qualquer carro?",
+    "criterios": ["potência nominal de 22 kW", "limite do veículo e da instalação", "não prometer potência constante"]
+  },
+  {
+    "id": "telemetria",
+    "pergunta": "Qual o consumo e o faturamento atual da estação EST-22?",
+    "criterios": ["informar ausência de telemetria", "não inventar números", "orientar consulta ao sistema operacional real"]
+  }
+]

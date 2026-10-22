@@ -1,0 +1,68 @@
+{
+  "v1": {
+    "conectores": {
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.9,
+      "justificativa": "A distinção AC/DC e o limite de potência têm apoio no trecho. 'É comum em veículos elétricos' não está afirmado no contexto. A ressalva de potência é útil, mas vai além da diferença pedida."
+    },
+    "tarifa": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "justificativa": "Horário, preço e caráter simulado estão explicitamente na tabela citada; responde as três partes."
+    },
+    "modelo": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9,
+      "justificativa": "As limitações de potência são sustentadas pelos trechos, mas a resposta não apresenta de forma direta a potência nominal do GW22K-HCA antes do exemplo."
+    },
+    "telemetria": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.95,
+      "justificativa": "Não inventa valores; informa ausência de telemetria e encaminha ao sistema real, conforme a FAQ. A abertura genérica torna a resposta menos direta."
+    }
+  },
+  "v2": {
+    "conectores": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "justificativa": "Distingue AC e DC com a fonte correta e sem informação lateral."
+    },
+    "tarifa": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "justificativa": "Traz horário, preço e aviso de simulação com suporte explícito."
+    },
+    "modelo": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.95,
+      "justificativa": "Informa 22 kW nominais e limites reais com suporte; repete a mesma limitação em três frases."
+    },
+    "telemetria": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.95,
+      "justificativa": "Recusa números atuais e orienta consultar registros reais, com fonte. A formulação começa com falta genérica de informação antes de responder diretamente sobre telemetria."
+    }
+  },
+  "v3": {
+    "conectores": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "justificativa": "Resposta curta e completa para a diferença AC/DC; citação coincide com a FAQ recuperada."
+    },
+    "tarifa": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "justificativa": "Responde horário, preço e natureza fictícia sem extrapolar para tarifa real."
+    },
+    "modelo": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "justificativa": "Declara 22 kW nominais e explica o limite real com exemplo de 7 kW, sem repetição desnecessária."
+    },
+    "telemetria": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "justificativa": "Diz diretamente que não há dado atual, cita a ausência de telemetria na FAQ e orienta consultar o sistema real."
+    }
+  }
+}

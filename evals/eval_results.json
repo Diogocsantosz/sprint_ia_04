@@ -1,0 +1,500 @@
+{
+  "tipo": "rubrica_manual_fallback",
+  "gerado_em_utc": "2026-10-20T18:47:39.605121+00:00",
+  "config": {
+    "provedor": "ollama",
+    "modelo": "qwen3:8b",
+    "temperature": 0.0,
+    "top_p": 0.9,
+    "max_tokens": 384,
+    "top_k": 4,
+    "embedding": "nomic-embed-text"
+  },
+  "rubrica": {
+    "faithfulness": "fração de afirmações factuais sustentadas pelos contextos recuperados; recusa correta sem fatos inventados recebe 1",
+    "answer_relevancy": "grau de atendimento direto dos itens pedidos, com desconto por desvio, repetição ou omissão; ausência justificada de dado operacional conta como atendimento",
+    "escala": "0 a 1; notas explícitas em revisao_manual.json, atribuídas em revisão assistida por IA e sujeitas a validação humana"
+  },
+  "iteracoes": [
+    {
+      "id": "v1",
+      "prompt": "v1",
+      "resultados": [
+        {
+          "caso_id": "conectores",
+          "pergunta": "Qual é a diferença entre os conectores Tipo 2 e CCS2?",
+          "criterios": [
+            "Tipo 2 associado a AC",
+            "CCS2 inclui contatos para DC",
+            "não prometer potência universal"
+          ],
+          "resposta": "O conector Tipo 2 é utilizado para recarga em corrente alternada (AC) e é comum em veículos elétricos. Já o CCS2 combina o conector Tipo 2 com contatos adicionais que permitem a recarga rápida em corrente contínua (DC) [faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?]. A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro, pois isso depende também do veículo, do ponto de recarga e das condições da sessão [faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?].",
+          "fontes": [
+            "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?"
+          ],
+          "contextos": [
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos",
+              "texto": "# Perguntas frequentes sobre recarga de veículos elétricos\n\n> Material educativo. Compatibilidade e parâmetros de instalação devem ser confirmados nos manuais do veículo e do carregador específicos.\n\n## Este chatbot mostra status, consumo e faturamento atuais da estação?\n\nNão. Este projeto acadêmico não tem acesso a telemetria nem ao sistema operacional das estações. Mesmo que o usuário informe um identificador como EST-22, o chatbot não sabe o status, o consumo ou o faturamento atual. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados. Não estime nem invente números para uma estação concreta.\n\n## Qual a diferença entre Tipo 2 e CCS2?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Segurança e conflitos",
+              "texto": "## Segurança e conflitos\n\nSó a equipe autorizada pode alterar configurações dos pontos. Cabos danificados e pontos com falha devem ser retirados de uso e comunicados ao responsável. Dúvidas sobre responsabilidade legal, aprovação de obras ou contestação de cobrança exigem consulta à administradora e, quando necessário, a profissional jurídico habilitado."
+            },
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "# Tarifas e horários: tabela fictícia de estudo\n\n> Todos os valores e horários desta página são **simulados**. Não são preços de concessionária, tarifas da GoodWe nem regras vigentes de um condomínio. Para responder sobre cobrança real, solicite a conta, o contrato ou a tabela atual do operador.\n\n| Faixa fictícia | Horário fictício | Preço didático |\n|---|---|---:|\n| Fora de ponta | 00:00–16:59 e 20:00–23:59 | R$ 0,70/kWh |\n| Ponta | 17:00–19:59 | R$ 1,10/kWh |"
+            }
+          ],
+          "latencia_s": 3.326,
+          "rubrica": {
+            "faithfulness": 0.75,
+            "answer_relevancy": 0.9,
+            "justificativa": "A distinção AC/DC e o limite de potência têm apoio no trecho. 'É comum em veículos elétricos' não está afirmado no contexto. A ressalva de potência é útil, mas vai além da diferença pedida."
+          }
+        },
+        {
+          "caso_id": "tarifa",
+          "pergunta": "No exemplo da base, qual o horário e o preço da ponta? Essa tarifa é real?",
+          "criterios": [
+            "17:00 a 19:59",
+            "R$ 1,10/kWh",
+            "deixar explícito que é fictícia"
+          ],
+          "resposta": "No exemplo da base, o horário da ponta é 17:00–19:59 e o preço é R$ 1,10/kWh [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo]. Essa tarifa não é real, pois todos os valores e horários apresentados na tabela são simulados e não representam preços de concessionária, tarifas da GoodWe nem regras vigentes de um condomínio [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo].",
+          "fontes": [
+            "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo"
+          ],
+          "contextos": [
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "# Tarifas e horários: tabela fictícia de estudo\n\n> Todos os valores e horários desta página são **simulados**. Não são preços de concessionária, tarifas da GoodWe nem regras vigentes de um condomínio. Para responder sobre cobrança real, solicite a conta, o contrato ou a tabela atual do operador.\n\n| Faixa fictícia | Horário fictício | Preço didático |\n|---|---|---:|\n| Fora de ponta | 00:00–16:59 e 20:00–23:59 | R$ 0,70/kWh |\n| Ponta | 17:00–19:59 | R$ 1,10/kWh |"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Segurança e conflitos",
+              "texto": "## Segurança e conflitos\n\nSó a equipe autorizada pode alterar configurações dos pontos. Cabos danificados e pontos com falha devem ser retirados de uso e comunicados ao responsável. Dúvidas sobre responsabilidade legal, aprovação de obras ou contestação de cobrança exigem consulta à administradora e, quando necessário, a profissional jurídico habilitado."
+            },
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "No exemplo, 10 kWh integralmente fora de ponta custariam R$ 7,00 de energia. Os mesmos 10 kWh integralmente na ponta custariam R$ 11,00 de energia. A conta real pode incluir tributos, bandeiras, perdas, taxa de serviço, demanda e outros componentes. Horários de ponta dependem da distribuidora e da modalidade tarifária; esta tabela não deve ser usada para prever uma fatura.\n\nPara uma sessão que cruza faixas, some separadamente o consumo medido em cada período: custo ilustrativo = (kWh fora de ponta × R$ 0,70) + (kWh na ponta × R$ 1,10). Sem medição por faixa, não é possível calcular esse exemplo com precisão."
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Regimento condominial de exemplo: carregadores compartilhados",
+              "texto": "# Regimento condominial de exemplo: carregadores compartilhados\n\n> Documento **simulado** para avaliação do RAG. Não representa um condomínio real, contrato, regra legal ou política da GoodWe. A convenção, a assembleia e a administradora do condomínio concreto prevalecem.\n\n## Uso e reserva\n\nNo condomínio fictício Vila Solar, moradores reservam um ponto por vez. Cada reserva dura até 4 horas, com tolerância de 15 minutos para liberar a vaga após o término. A reserva deve ser feita pelo canal adotado pelo condomínio. Visitantes precisam de autorização da portaria e do morador responsável. Essas regras são apenas exemplos e não devem ser apresentadas como universais.\n\n## Rateio ilustrativo"
+            }
+          ],
+          "latencia_s": 2.793,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 1.0,
+            "justificativa": "Horário, preço e caráter simulado estão explicitamente na tabela citada; responde as três partes."
+          }
+        },
+        {
+          "caso_id": "modelo",
+          "pergunta": "O GW22K-HCA entrega sempre 22 kW a qualquer carro?",
+          "criterios": [
+            "potência nominal de 22 kW",
+            "limite do veículo e da instalação",
+            "não prometer potência constante"
+          ],
+          "resposta": "Não. A potência efetiva entregue pelo GW22K-HCA depende do veículo, da instalação, da configuração e da disponibilidade de energia [manuais_goodwe.md · Linha HCA (dados de produto)]. Um carro limitado a 7 kW em AC não receberá 22 kW apenas porque o ponto tem potência nominal de 22 kW [manuais_goodwe.md · Linha HCA (dados de produto)]. A potência pode variar durante a recarga, sendo limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão [faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?].",
+          "fontes": [
+            "manuais_goodwe.md · Linha HCA (dados de produto)",
+            "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?"
+          ],
+          "contextos": [
+            {
+              "referencia": "manuais_goodwe.md · Linha HCA (dados de produto)",
+              "texto": "A potência real depende também do carregador embarcado do veículo, da instalação, da configuração e da disponibilidade de energia. Um carro limitado a 7 kW em AC não receberá 22 kW apenas porque o ponto tem potência nominal de 22 kW. Não use esta tabela para dimensionar cabos ou proteções. A instalação e a manutenção exigem profissional habilitado e consulta ao manual aplicável ao modelo instalado.\n\nFontes de produto: [página GoodWe HCA](https://br.goodwe.com/hca-evcharger) e [manual oficial HCA](https://br.goodwe.com/Ftp/EN/Downloads/User%20Manual/GW_HCA%20Series_User%20Manual-EN.pdf). Consulte a revisão do manual do equipamento antes de aplicar qualquer procedimento.\n\n## Cenário didático: ChargeGrid / EV ChargeOps"
+            },
+            {
+              "referencia": "manuais_goodwe.md · Carregadores GoodWe: referência técnica e operação simulada",
+              "texto": "# Carregadores GoodWe: referência técnica e operação simulada\n\n> Escopo: material didático da Sprint 04. As especificações da linha HCA abaixo vêm das páginas oficiais da GoodWe. Os fluxos chamados ChargeGrid e EV ChargeOps são cenários **simulados** para testar o chatbot; não são produtos ou serviços cuja existência seja afirmada pela GoodWe.\n\n## Linha HCA (dados de produto)\n\n| Modelo | Potência nominal de saída | Alimentação nominal | Uso |\n|---|---:|---|---|\n| GW7K-HCA | 7 kW | 230 V, monofásica | Recarga AC residencial ou compartilhada |\n| GW11K-HCA | 11 kW | 400 V, trifásica | Recarga AC compartilhada |\n| GW22K-HCA | 22 kW | 400 V, trifásica | Recarga AC compartilhada |"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Rateio ilustrativo",
+              "texto": "## Rateio ilustrativo\n\nO consumo individual é o valor em kWh registrado por medidor ou sistema de medição aprovado pelo condomínio. Em um exemplo puramente aritmético, custo variável = kWh medidos × tarifa efetiva informada pela administradora. Custos fixos de infraestrutura podem ser divididos segundo a convenção aprovada. Sem leitura, tarifa e critério vigentes, o chatbot não consegue apurar cobrança real.\n\nExemplo: uma sessão hipotética de 20 kWh com tarifa hipotética de R$ 0,90/kWh corresponde a R$ 18,00 de energia, antes de eventuais encargos. O valor não é uma tarifa real nem uma proposta de cobrança.\n\n## Segurança e conflitos"
+            }
+          ],
+          "latencia_s": 3.365,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 0.9,
+            "justificativa": "As limitações de potência são sustentadas pelos trechos, mas a resposta não apresenta de forma direta a potência nominal do GW22K-HCA antes do exemplo."
+          }
+        },
+        {
+          "caso_id": "telemetria",
+          "pergunta": "Qual o consumo e o faturamento atual da estação EST-22?",
+          "criterios": [
+            "informar ausência de telemetria",
+            "não inventar números",
+            "orientar consulta ao sistema operacional real"
+          ],
+          "resposta": "Não encontrei informação suficiente na base para responder. A pergunta pede dados específicos sobre a estação EST-22, como consumo e faturamento atuais, que não estão disponíveis nos documentos. O chatbot não tem acesso a telemetria nem ao sistema operacional das estações [faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos]. Para obter esses valores, é necessário consultar o sistema operacional real e os registros de medição autorizados.",
+          "fontes": [
+            "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos"
+          ],
+          "contextos": [
+            {
+              "referencia": "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos",
+              "texto": "# Perguntas frequentes sobre recarga de veículos elétricos\n\n> Material educativo. Compatibilidade e parâmetros de instalação devem ser confirmados nos manuais do veículo e do carregador específicos.\n\n## Este chatbot mostra status, consumo e faturamento atuais da estação?\n\nNão. Este projeto acadêmico não tem acesso a telemetria nem ao sistema operacional das estações. Mesmo que o usuário informe um identificador como EST-22, o chatbot não sabe o status, o consumo ou o faturamento atual. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados. Não estime nem invente números para uma estação concreta.\n\n## Qual a diferença entre Tipo 2 e CCS2?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Rateio ilustrativo",
+              "texto": "## Rateio ilustrativo\n\nO consumo individual é o valor em kWh registrado por medidor ou sistema de medição aprovado pelo condomínio. Em um exemplo puramente aritmético, custo variável = kWh medidos × tarifa efetiva informada pela administradora. Custos fixos de infraestrutura podem ser divididos segundo a convenção aprovada. Sem leitura, tarifa e critério vigentes, o chatbot não consegue apurar cobrança real.\n\nExemplo: uma sessão hipotética de 20 kWh com tarifa hipotética de R$ 0,90/kWh corresponde a R$ 18,00 de energia, antes de eventuais encargos. O valor não é uma tarifa real nem uma proposta de cobrança.\n\n## Segurança e conflitos"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Como estimar o tempo e o custo?",
+              "texto": "## Como estimar o tempo e o custo?\n\nUma estimativa inicial de tempo é energia desejada em kWh dividida pela potência efetiva média em kW. Exemplo idealizado: 21 kWh / 7 kW = 3 horas. Na prática há perdas e variação de potência. Para custo, multiplique os kWh efetivamente cobrados pela tarifa aplicável e acrescente encargos previstos no contrato. Sem essas entradas, não há custo real verificável.\n\n## Posso instalar ou consertar por conta própria?\n\nNão é uma orientação segura. Projeto, dimensionamento, instalação e manutenção elétrica devem ser feitos por profissional habilitado conforme documentação do fabricante e regras locais. Se houver aquecimento anormal, cheiro de queimado ou dano visível, interrompa o uso e procure o responsável técnico."
+            }
+          ],
+          "latencia_s": 2.852,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 0.95,
+            "justificativa": "Não inventa valores; informa ausência de telemetria e encaminha ao sistema real, conforme a FAQ. A abertura genérica torna a resposta menos direta."
+          }
+        }
+      ],
+      "medias": {
+        "faithfulness": 0.938,
+        "answer_relevancy": 0.938,
+        "media_geral": 0.938
+      }
+    },
+    {
+      "id": "v2",
+      "prompt": "v2",
+      "resultados": [
+        {
+          "caso_id": "conectores",
+          "pergunta": "Qual é a diferença entre os conectores Tipo 2 e CCS2?",
+          "criterios": [
+            "Tipo 2 associado a AC",
+            "CCS2 inclui contatos para DC",
+            "não prometer potência universal"
+          ],
+          "resposta": "O conector Tipo 2 é uma interface utilizada para recarga de corrente alternada (AC), enquanto o CCS2 combina a região do conector Tipo 2 com contatos adicionais que permitem a recarga rápida em corrente contínua (DC) [faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?].",
+          "fontes": [
+            "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?"
+          ],
+          "contextos": [
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos",
+              "texto": "# Perguntas frequentes sobre recarga de veículos elétricos\n\n> Material educativo. Compatibilidade e parâmetros de instalação devem ser confirmados nos manuais do veículo e do carregador específicos.\n\n## Este chatbot mostra status, consumo e faturamento atuais da estação?\n\nNão. Este projeto acadêmico não tem acesso a telemetria nem ao sistema operacional das estações. Mesmo que o usuário informe um identificador como EST-22, o chatbot não sabe o status, o consumo ou o faturamento atual. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados. Não estime nem invente números para uma estação concreta.\n\n## Qual a diferença entre Tipo 2 e CCS2?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Segurança e conflitos",
+              "texto": "## Segurança e conflitos\n\nSó a equipe autorizada pode alterar configurações dos pontos. Cabos danificados e pontos com falha devem ser retirados de uso e comunicados ao responsável. Dúvidas sobre responsabilidade legal, aprovação de obras ou contestação de cobrança exigem consulta à administradora e, quando necessário, a profissional jurídico habilitado."
+            },
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "# Tarifas e horários: tabela fictícia de estudo\n\n> Todos os valores e horários desta página são **simulados**. Não são preços de concessionária, tarifas da GoodWe nem regras vigentes de um condomínio. Para responder sobre cobrança real, solicite a conta, o contrato ou a tabela atual do operador.\n\n| Faixa fictícia | Horário fictício | Preço didático |\n|---|---|---:|\n| Fora de ponta | 00:00–16:59 e 20:00–23:59 | R$ 0,70/kWh |\n| Ponta | 17:00–19:59 | R$ 1,10/kWh |"
+            }
+          ],
+          "latencia_s": 2.138,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 1.0,
+            "justificativa": "Distingue AC e DC com a fonte correta e sem informação lateral."
+          }
+        },
+        {
+          "caso_id": "tarifa",
+          "pergunta": "No exemplo da base, qual o horário e o preço da ponta? Essa tarifa é real?",
+          "criterios": [
+            "17:00 a 19:59",
+            "R$ 1,10/kWh",
+            "deixar explícito que é fictícia"
+          ],
+          "resposta": "No exemplo da base, o horário da ponta é 17:00–19:59 e o preço é R$ 1,10/kWh [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo]. Essa tarifa é fictícia, pois todos os valores e horários apresentados na tabela são simulados e não representam tarifas reais ou vigentes [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo].",
+          "fontes": [
+            "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo"
+          ],
+          "contextos": [
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "# Tarifas e horários: tabela fictícia de estudo\n\n> Todos os valores e horários desta página são **simulados**. Não são preços de concessionária, tarifas da GoodWe nem regras vigentes de um condomínio. Para responder sobre cobrança real, solicite a conta, o contrato ou a tabela atual do operador.\n\n| Faixa fictícia | Horário fictício | Preço didático |\n|---|---|---:|\n| Fora de ponta | 00:00–16:59 e 20:00–23:59 | R$ 0,70/kWh |\n| Ponta | 17:00–19:59 | R$ 1,10/kWh |"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Segurança e conflitos",
+              "texto": "## Segurança e conflitos\n\nSó a equipe autorizada pode alterar configurações dos pontos. Cabos danificados e pontos com falha devem ser retirados de uso e comunicados ao responsável. Dúvidas sobre responsabilidade legal, aprovação de obras ou contestação de cobrança exigem consulta à administradora e, quando necessário, a profissional jurídico habilitado."
+            },
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "No exemplo, 10 kWh integralmente fora de ponta custariam R$ 7,00 de energia. Os mesmos 10 kWh integralmente na ponta custariam R$ 11,00 de energia. A conta real pode incluir tributos, bandeiras, perdas, taxa de serviço, demanda e outros componentes. Horários de ponta dependem da distribuidora e da modalidade tarifária; esta tabela não deve ser usada para prever uma fatura.\n\nPara uma sessão que cruza faixas, some separadamente o consumo medido em cada período: custo ilustrativo = (kWh fora de ponta × R$ 0,70) + (kWh na ponta × R$ 1,10). Sem medição por faixa, não é possível calcular esse exemplo com precisão."
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Regimento condominial de exemplo: carregadores compartilhados",
+              "texto": "# Regimento condominial de exemplo: carregadores compartilhados\n\n> Documento **simulado** para avaliação do RAG. Não representa um condomínio real, contrato, regra legal ou política da GoodWe. A convenção, a assembleia e a administradora do condomínio concreto prevalecem.\n\n## Uso e reserva\n\nNo condomínio fictício Vila Solar, moradores reservam um ponto por vez. Cada reserva dura até 4 horas, com tolerância de 15 minutos para liberar a vaga após o término. A reserva deve ser feita pelo canal adotado pelo condomínio. Visitantes precisam de autorização da portaria e do morador responsável. Essas regras são apenas exemplos e não devem ser apresentadas como universais.\n\n## Rateio ilustrativo"
+            }
+          ],
+          "latencia_s": 2.542,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 1.0,
+            "justificativa": "Traz horário, preço e aviso de simulação com suporte explícito."
+          }
+        },
+        {
+          "caso_id": "modelo",
+          "pergunta": "O GW22K-HCA entrega sempre 22 kW a qualquer carro?",
+          "criterios": [
+            "potência nominal de 22 kW",
+            "limite do veículo e da instalação",
+            "não prometer potência constante"
+          ],
+          "resposta": "Não. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão [manuais_goodwe.md · Linha HCA (dados de produto)]. O GW22K-HCA indica uma potência nominal de saída de 22 kW, mas isso não significa que ele entregará sempre 22 kW a qualquer carro [manuais_goodwe.md · Carregadores GoodWe: referência técnica e operação simulada]. A potência real depende também do carregador embarcado do veículo, da instalação, da configuração e da disponibilidade de energia [manuais_goodwe.md · Linha HCA (dados de produto)].",
+          "fontes": [
+            "manuais_goodwe.md · Linha HCA (dados de produto)",
+            "manuais_goodwe.md · Carregadores GoodWe: referência técnica e operação simulada"
+          ],
+          "contextos": [
+            {
+              "referencia": "manuais_goodwe.md · Linha HCA (dados de produto)",
+              "texto": "A potência real depende também do carregador embarcado do veículo, da instalação, da configuração e da disponibilidade de energia. Um carro limitado a 7 kW em AC não receberá 22 kW apenas porque o ponto tem potência nominal de 22 kW. Não use esta tabela para dimensionar cabos ou proteções. A instalação e a manutenção exigem profissional habilitado e consulta ao manual aplicável ao modelo instalado.\n\nFontes de produto: [página GoodWe HCA](https://br.goodwe.com/hca-evcharger) e [manual oficial HCA](https://br.goodwe.com/Ftp/EN/Downloads/User%20Manual/GW_HCA%20Series_User%20Manual-EN.pdf). Consulte a revisão do manual do equipamento antes de aplicar qualquer procedimento.\n\n## Cenário didático: ChargeGrid / EV ChargeOps"
+            },
+            {
+              "referencia": "manuais_goodwe.md · Carregadores GoodWe: referência técnica e operação simulada",
+              "texto": "# Carregadores GoodWe: referência técnica e operação simulada\n\n> Escopo: material didático da Sprint 04. As especificações da linha HCA abaixo vêm das páginas oficiais da GoodWe. Os fluxos chamados ChargeGrid e EV ChargeOps são cenários **simulados** para testar o chatbot; não são produtos ou serviços cuja existência seja afirmada pela GoodWe.\n\n## Linha HCA (dados de produto)\n\n| Modelo | Potência nominal de saída | Alimentação nominal | Uso |\n|---|---:|---|---|\n| GW7K-HCA | 7 kW | 230 V, monofásica | Recarga AC residencial ou compartilhada |\n| GW11K-HCA | 11 kW | 400 V, trifásica | Recarga AC compartilhada |\n| GW22K-HCA | 22 kW | 400 V, trifásica | Recarga AC compartilhada |"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Rateio ilustrativo",
+              "texto": "## Rateio ilustrativo\n\nO consumo individual é o valor em kWh registrado por medidor ou sistema de medição aprovado pelo condomínio. Em um exemplo puramente aritmético, custo variável = kWh medidos × tarifa efetiva informada pela administradora. Custos fixos de infraestrutura podem ser divididos segundo a convenção aprovada. Sem leitura, tarifa e critério vigentes, o chatbot não consegue apurar cobrança real.\n\nExemplo: uma sessão hipotética de 20 kWh com tarifa hipotética de R$ 0,90/kWh corresponde a R$ 18,00 de energia, antes de eventuais encargos. O valor não é uma tarifa real nem uma proposta de cobrança.\n\n## Segurança e conflitos"
+            }
+          ],
+          "latencia_s": 3.482,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 0.95,
+            "justificativa": "Informa 22 kW nominais e limites reais com suporte; repete a mesma limitação em três frases."
+          }
+        },
+        {
+          "caso_id": "telemetria",
+          "pergunta": "Qual o consumo e o faturamento atual da estação EST-22?",
+          "criterios": [
+            "informar ausência de telemetria",
+            "não inventar números",
+            "orientar consulta ao sistema operacional real"
+          ],
+          "resposta": "Não encontrei informação suficiente na base para responder. A pergunta pede dados operacionais atuais da estação EST-22, mas os documentos não fornecem informações sobre o status, consumo ou faturamento de estações específicas. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados [faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos].",
+          "fontes": [
+            "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos"
+          ],
+          "contextos": [
+            {
+              "referencia": "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos",
+              "texto": "# Perguntas frequentes sobre recarga de veículos elétricos\n\n> Material educativo. Compatibilidade e parâmetros de instalação devem ser confirmados nos manuais do veículo e do carregador específicos.\n\n## Este chatbot mostra status, consumo e faturamento atuais da estação?\n\nNão. Este projeto acadêmico não tem acesso a telemetria nem ao sistema operacional das estações. Mesmo que o usuário informe um identificador como EST-22, o chatbot não sabe o status, o consumo ou o faturamento atual. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados. Não estime nem invente números para uma estação concreta.\n\n## Qual a diferença entre Tipo 2 e CCS2?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Rateio ilustrativo",
+              "texto": "## Rateio ilustrativo\n\nO consumo individual é o valor em kWh registrado por medidor ou sistema de medição aprovado pelo condomínio. Em um exemplo puramente aritmético, custo variável = kWh medidos × tarifa efetiva informada pela administradora. Custos fixos de infraestrutura podem ser divididos segundo a convenção aprovada. Sem leitura, tarifa e critério vigentes, o chatbot não consegue apurar cobrança real.\n\nExemplo: uma sessão hipotética de 20 kWh com tarifa hipotética de R$ 0,90/kWh corresponde a R$ 18,00 de energia, antes de eventuais encargos. O valor não é uma tarifa real nem uma proposta de cobrança.\n\n## Segurança e conflitos"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Como estimar o tempo e o custo?",
+              "texto": "## Como estimar o tempo e o custo?\n\nUma estimativa inicial de tempo é energia desejada em kWh dividida pela potência efetiva média em kW. Exemplo idealizado: 21 kWh / 7 kW = 3 horas. Na prática há perdas e variação de potência. Para custo, multiplique os kWh efetivamente cobrados pela tarifa aplicável e acrescente encargos previstos no contrato. Sem essas entradas, não há custo real verificável.\n\n## Posso instalar ou consertar por conta própria?\n\nNão é uma orientação segura. Projeto, dimensionamento, instalação e manutenção elétrica devem ser feitos por profissional habilitado conforme documentação do fabricante e regras locais. Se houver aquecimento anormal, cheiro de queimado ou dano visível, interrompa o uso e procure o responsável técnico."
+            }
+          ],
+          "latencia_s": 2.782,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 0.95,
+            "justificativa": "Recusa números atuais e orienta consultar registros reais, com fonte. A formulação começa com falta genérica de informação antes de responder diretamente sobre telemetria."
+          }
+        }
+      ],
+      "medias": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.975,
+        "media_geral": 0.988
+      }
+    },
+    {
+      "id": "v3",
+      "prompt": "v3",
+      "resultados": [
+        {
+          "caso_id": "conectores",
+          "pergunta": "Qual é a diferença entre os conectores Tipo 2 e CCS2?",
+          "criterios": [
+            "Tipo 2 associado a AC",
+            "CCS2 inclui contatos para DC",
+            "não prometer potência universal"
+          ],
+          "resposta": "O conector Tipo 2 é usado para recarga em corrente alternada (AC), enquanto o CCS2 combina o conector Tipo 2 com contatos adicionais para recarga rápida em corrente contínua (DC) [faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?].",
+          "fontes": [
+            "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?"
+          ],
+          "contextos": [
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos",
+              "texto": "# Perguntas frequentes sobre recarga de veículos elétricos\n\n> Material educativo. Compatibilidade e parâmetros de instalação devem ser confirmados nos manuais do veículo e do carregador específicos.\n\n## Este chatbot mostra status, consumo e faturamento atuais da estação?\n\nNão. Este projeto acadêmico não tem acesso a telemetria nem ao sistema operacional das estações. Mesmo que o usuário informe um identificador como EST-22, o chatbot não sabe o status, o consumo ou o faturamento atual. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados. Não estime nem invente números para uma estação concreta.\n\n## Qual a diferença entre Tipo 2 e CCS2?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Segurança e conflitos",
+              "texto": "## Segurança e conflitos\n\nSó a equipe autorizada pode alterar configurações dos pontos. Cabos danificados e pontos com falha devem ser retirados de uso e comunicados ao responsável. Dúvidas sobre responsabilidade legal, aprovação de obras ou contestação de cobrança exigem consulta à administradora e, quando necessário, a profissional jurídico habilitado."
+            },
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "# Tarifas e horários: tabela fictícia de estudo\n\n> Todos os valores e horários desta página são **simulados**. Não são preços de concessionária, tarifas da GoodWe nem regras vigentes de um condomínio. Para responder sobre cobrança real, solicite a conta, o contrato ou a tabela atual do operador.\n\n| Faixa fictícia | Horário fictício | Preço didático |\n|---|---|---:|\n| Fora de ponta | 00:00–16:59 e 20:00–23:59 | R$ 0,70/kWh |\n| Ponta | 17:00–19:59 | R$ 1,10/kWh |"
+            }
+          ],
+          "latencia_s": 1.816,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 1.0,
+            "justificativa": "Resposta curta e completa para a diferença AC/DC; citação coincide com a FAQ recuperada."
+          }
+        },
+        {
+          "caso_id": "tarifa",
+          "pergunta": "No exemplo da base, qual o horário e o preço da ponta? Essa tarifa é real?",
+          "criterios": [
+            "17:00 a 19:59",
+            "R$ 1,10/kWh",
+            "deixar explícito que é fictícia"
+          ],
+          "resposta": "No exemplo da base, o horário da ponta é 17:00–19:59 e o preço é R$ 1,10/kWh [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo]. Essa tarifa é fictícia, pois todos os valores e horários apresentados na tabela são simulados e não representam tarifas reais [tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo].",
+          "fontes": [
+            "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo"
+          ],
+          "contextos": [
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "# Tarifas e horários: tabela fictícia de estudo\n\n> Todos os valores e horários desta página são **simulados**. Não são preços de concessionária, tarifas da GoodWe nem regras vigentes de um condomínio. Para responder sobre cobrança real, solicite a conta, o contrato ou a tabela atual do operador.\n\n| Faixa fictícia | Horário fictício | Preço didático |\n|---|---|---:|\n| Fora de ponta | 00:00–16:59 e 20:00–23:59 | R$ 0,70/kWh |\n| Ponta | 17:00–19:59 | R$ 1,10/kWh |"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Segurança e conflitos",
+              "texto": "## Segurança e conflitos\n\nSó a equipe autorizada pode alterar configurações dos pontos. Cabos danificados e pontos com falha devem ser retirados de uso e comunicados ao responsável. Dúvidas sobre responsabilidade legal, aprovação de obras ou contestação de cobrança exigem consulta à administradora e, quando necessário, a profissional jurídico habilitado."
+            },
+            {
+              "referencia": "tabelas_tarifarias.md · Tarifas e horários: tabela fictícia de estudo",
+              "texto": "No exemplo, 10 kWh integralmente fora de ponta custariam R$ 7,00 de energia. Os mesmos 10 kWh integralmente na ponta custariam R$ 11,00 de energia. A conta real pode incluir tributos, bandeiras, perdas, taxa de serviço, demanda e outros componentes. Horários de ponta dependem da distribuidora e da modalidade tarifária; esta tabela não deve ser usada para prever uma fatura.\n\nPara uma sessão que cruza faixas, some separadamente o consumo medido em cada período: custo ilustrativo = (kWh fora de ponta × R$ 0,70) + (kWh na ponta × R$ 1,10). Sem medição por faixa, não é possível calcular esse exemplo com precisão."
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Regimento condominial de exemplo: carregadores compartilhados",
+              "texto": "# Regimento condominial de exemplo: carregadores compartilhados\n\n> Documento **simulado** para avaliação do RAG. Não representa um condomínio real, contrato, regra legal ou política da GoodWe. A convenção, a assembleia e a administradora do condomínio concreto prevalecem.\n\n## Uso e reserva\n\nNo condomínio fictício Vila Solar, moradores reservam um ponto por vez. Cada reserva dura até 4 horas, com tolerância de 15 minutos para liberar a vaga após o término. A reserva deve ser feita pelo canal adotado pelo condomínio. Visitantes precisam de autorização da portaria e do morador responsável. Essas regras são apenas exemplos e não devem ser apresentadas como universais.\n\n## Rateio ilustrativo"
+            }
+          ],
+          "latencia_s": 2.563,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 1.0,
+            "justificativa": "Responde horário, preço e natureza fictícia sem extrapolar para tarifa real."
+          }
+        },
+        {
+          "caso_id": "modelo",
+          "pergunta": "O GW22K-HCA entrega sempre 22 kW a qualquer carro?",
+          "criterios": [
+            "potência nominal de 22 kW",
+            "limite do veículo e da instalação",
+            "não prometer potência constante"
+          ],
+          "resposta": "Não. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão [manuais_goodwe.md · Linha HCA (dados de produto)]. O GW22K-HCA indica uma potência nominal de saída de 22 kW, mas um carro limitado a 7 kW em AC não receberá 22 kW apenas porque o ponto tem potência nominal de 22 kW [manuais_goodwe.md · Linha HCA (dados de produto)].",
+          "fontes": [
+            "manuais_goodwe.md · Linha HCA (dados de produto)"
+          ],
+          "contextos": [
+            {
+              "referencia": "manuais_goodwe.md · Linha HCA (dados de produto)",
+              "texto": "A potência real depende também do carregador embarcado do veículo, da instalação, da configuração e da disponibilidade de energia. Um carro limitado a 7 kW em AC não receberá 22 kW apenas porque o ponto tem potência nominal de 22 kW. Não use esta tabela para dimensionar cabos ou proteções. A instalação e a manutenção exigem profissional habilitado e consulta ao manual aplicável ao modelo instalado.\n\nFontes de produto: [página GoodWe HCA](https://br.goodwe.com/hca-evcharger) e [manual oficial HCA](https://br.goodwe.com/Ftp/EN/Downloads/User%20Manual/GW_HCA%20Series_User%20Manual-EN.pdf). Consulte a revisão do manual do equipamento antes de aplicar qualquer procedimento.\n\n## Cenário didático: ChargeGrid / EV ChargeOps"
+            },
+            {
+              "referencia": "manuais_goodwe.md · Carregadores GoodWe: referência técnica e operação simulada",
+              "texto": "# Carregadores GoodWe: referência técnica e operação simulada\n\n> Escopo: material didático da Sprint 04. As especificações da linha HCA abaixo vêm das páginas oficiais da GoodWe. Os fluxos chamados ChargeGrid e EV ChargeOps são cenários **simulados** para testar o chatbot; não são produtos ou serviços cuja existência seja afirmada pela GoodWe.\n\n## Linha HCA (dados de produto)\n\n| Modelo | Potência nominal de saída | Alimentação nominal | Uso |\n|---|---:|---|---|\n| GW7K-HCA | 7 kW | 230 V, monofásica | Recarga AC residencial ou compartilhada |\n| GW11K-HCA | 11 kW | 400 V, trifásica | Recarga AC compartilhada |\n| GW22K-HCA | 22 kW | 400 V, trifásica | Recarga AC compartilhada |"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Rateio ilustrativo",
+              "texto": "## Rateio ilustrativo\n\nO consumo individual é o valor em kWh registrado por medidor ou sistema de medição aprovado pelo condomínio. Em um exemplo puramente aritmético, custo variável = kWh medidos × tarifa efetiva informada pela administradora. Custos fixos de infraestrutura podem ser divididos segundo a convenção aprovada. Sem leitura, tarifa e critério vigentes, o chatbot não consegue apurar cobrança real.\n\nExemplo: uma sessão hipotética de 20 kWh com tarifa hipotética de R$ 0,90/kWh corresponde a R$ 18,00 de energia, antes de eventuais encargos. O valor não é uma tarifa real nem uma proposta de cobrança.\n\n## Segurança e conflitos"
+            }
+          ],
+          "latencia_s": 2.424,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 1.0,
+            "justificativa": "Declara 22 kW nominais e explica o limite real com exemplo de 7 kW, sem repetição desnecessária."
+          }
+        },
+        {
+          "caso_id": "telemetria",
+          "pergunta": "Qual o consumo e o faturamento atual da estação EST-22?",
+          "criterios": [
+            "informar ausência de telemetria",
+            "não inventar números",
+            "orientar consulta ao sistema operacional real"
+          ],
+          "resposta": "Não há dado atual acessível sobre o consumo e o faturamento da estação EST-22. Este projeto acadêmico não tem acesso a telemetria nem ao sistema operacional das estações [faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos]. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados.",
+          "fontes": [
+            "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos"
+          ],
+          "contextos": [
+            {
+              "referencia": "faqs_carregamento.md · Perguntas frequentes sobre recarga de veículos elétricos",
+              "texto": "# Perguntas frequentes sobre recarga de veículos elétricos\n\n> Material educativo. Compatibilidade e parâmetros de instalação devem ser confirmados nos manuais do veículo e do carregador específicos.\n\n## Este chatbot mostra status, consumo e faturamento atuais da estação?\n\nNão. Este projeto acadêmico não tem acesso a telemetria nem ao sistema operacional das estações. Mesmo que o usuário informe um identificador como EST-22, o chatbot não sabe o status, o consumo ou o faturamento atual. Para obter esses valores, consulte o sistema operacional real e os registros de medição autorizados. Não estime nem invente números para uma estação concreta.\n\n## Qual a diferença entre Tipo 2 e CCS2?"
+            },
+            {
+              "referencia": "regimentos_condominiais.md · Rateio ilustrativo",
+              "texto": "## Rateio ilustrativo\n\nO consumo individual é o valor em kWh registrado por medidor ou sistema de medição aprovado pelo condomínio. Em um exemplo puramente aritmético, custo variável = kWh medidos × tarifa efetiva informada pela administradora. Custos fixos de infraestrutura podem ser divididos segundo a convenção aprovada. Sem leitura, tarifa e critério vigentes, o chatbot não consegue apurar cobrança real.\n\nExemplo: uma sessão hipotética de 20 kWh com tarifa hipotética de R$ 0,90/kWh corresponde a R$ 18,00 de energia, antes de eventuais encargos. O valor não é uma tarifa real nem uma proposta de cobrança.\n\n## Segurança e conflitos"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Qual a diferença entre Tipo 2 e CCS2?",
+              "texto": "## Qual a diferença entre Tipo 2 e CCS2?\n\nTipo 2 é uma interface usada em recarga de corrente alternada (AC). CCS2 combina a região do conector Tipo 2 com contatos adicionais usados para recarga rápida em corrente contínua (DC). A presença do conector no veículo não garante que qualquer potência anunciada pelo ponto será aceita pelo carro.\n\n## Um carregador de 22 kW carrega todo carro a 22 kW?\n\nNão. A potência efetiva é limitada pelo veículo, pelo ponto, pela instalação e pelas condições da sessão. Carregadores AC de 7 kW, 11 kW e 22 kW indicam potências nominais de equipamentos, não uma promessa de velocidade constante. A potência pode variar durante a recarga.\n\n## Como estimar o tempo e o custo?"
+            },
+            {
+              "referencia": "faqs_carregamento.md · Como estimar o tempo e o custo?",
+              "texto": "## Como estimar o tempo e o custo?\n\nUma estimativa inicial de tempo é energia desejada em kWh dividida pela potência efetiva média em kW. Exemplo idealizado: 21 kWh / 7 kW = 3 horas. Na prática há perdas e variação de potência. Para custo, multiplique os kWh efetivamente cobrados pela tarifa aplicável e acrescente encargos previstos no contrato. Sem essas entradas, não há custo real verificável.\n\n## Posso instalar ou consertar por conta própria?\n\nNão é uma orientação segura. Projeto, dimensionamento, instalação e manutenção elétrica devem ser feitos por profissional habilitado conforme documentação do fabricante e regras locais. Se houver aquecimento anormal, cheiro de queimado ou dano visível, interrompa o uso e procure o responsável técnico."
+            }
+          ],
+          "latencia_s": 2.471,
+          "rubrica": {
+            "faithfulness": 1.0,
+            "answer_relevancy": 1.0,
+            "justificativa": "Diz diretamente que não há dado atual, cita a ausência de telemetria na FAQ e orienta consultar o sistema real."
+          }
+        }
+      ],
+      "medias": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "media_geral": 1.0
+      }
+    }
+  ],
+  "revisao": "Análise assistida por IA das respostas e contextos de 20/10/2026; notas subjetivas, confirmar em revisão humana"
+}
